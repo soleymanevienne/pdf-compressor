@@ -1,7 +1,5 @@
-// src/components/PDFCompressor.tsx
 import React, { useState } from 'react';
 import { Upload, FileText, Check, AlertCircle, Download } from 'lucide-react';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface CompressionStatus {
   type: 'error' | 'success';
@@ -205,20 +203,16 @@ export default function PDFCompressor() {
         )}
 
         {compressionStatus && (
-          <Alert className={`mt-4 ${
-            compressionStatus.type === 'error' ? 'bg-red-50' : 'bg-green-50'
+          <div className={`mt-4 p-4 rounded-lg flex items-center ${
+            compressionStatus.type === 'error' ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'
           }`}>
             {compressionStatus.type === 'error' ? (
-              <AlertCircle className="h-4 w-4 text-red-600" />
+              <AlertCircle className="h-5 w-5 mr-2" />
             ) : (
-              <Check className="h-4 w-4 text-green-600" />
+              <Check className="h-5 w-5 mr-2" />
             )}
-            <AlertDescription className={`
-              ${compressionStatus.type === 'error' ? 'text-red-600' : 'text-green-600'}
-            `}>
-              {compressionStatus.message}
-            </AlertDescription>
-          </Alert>
+            <p>{compressionStatus.message}</p>
+          </div>
         )}
       </div>
     </div>
