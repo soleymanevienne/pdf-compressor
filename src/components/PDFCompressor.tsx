@@ -22,10 +22,10 @@ export default function PDFCompressor() {
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile && selectedFile.type === 'application/pdf') {
-      if (selectedFile.size > 10 * 1024 * 1024) {
+      if (selectedFile.size > 90 * 1024 * 1024) {
         setCompressionStatus({
           type: 'error',
-          message: 'Le fichier ne doit pas dépasser 10MB'
+          message: 'Le fichier ne doit pas dépasser 90MB'
         });
         return;
       }
